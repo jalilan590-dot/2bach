@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividades de Matemáticas</title>
+    <title>Test: Conjuntos y Sucesos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,59 +17,420 @@
             color: #2c3e50;
             margin-bottom: 30px;
         }
-        .activity-card {
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        .question {
             background-color: white;
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
         }
-        .activity-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .options {
+            margin-top: 15px;
         }
-        .activity-card h2 {
-            color: #3498db;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
+        .option {
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-        .activity-card p {
-            margin-bottom: 15px;
+        .option:hover {
+            background-color: #edf7ff;
         }
-        .activity-card a {
-            display: inline-block;
+        .selected {
+            background-color: #d4e9ff;
+            font-weight: bold;
+        }
+        .answer {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e8f8f5;
+            border-radius: 5px;
+            border-left: 4px solid #2ecc71;
+        }
+        button {
             background-color: #3498db;
             color: white;
-            text-decoration: none;
+            border: none;
             padding: 10px 15px;
             border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 10px 0;
         }
-        .activity-card a:hover {
+        button:hover {
             background-color: #2980b9;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .score-container {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>Actividades de Matemáticas</h1>
+    <h1>Actividad Interactiva: Test sobre Conjuntos y Sucesos</h1>
     
-    <div class="activity-card">
-        <h2>Conjuntos y Sucesos</h2>
-        <p>Cuestionario interactivo sobre conjuntos, operaciones con conjuntos y clasificación de sucesos.</p>
-        <a href="conjuntos/">Abrir actividad</a>
+    <div id="quiz-container">
+        <div id="question-1" class="question">
+            <h2>Pregunta 1</h2>
+            <p>¿Cuál de los siguientes es un suceso elemental al lanzar un dado de 6 caras?</p>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 1, false)">A) Obtener un número par</div>
+                <div class="option" onclick="selectOption(this, 1, true)">B) Obtener un 3</div>
+                <div class="option" onclick="selectOption(this, 1, false)">C) Obtener un número menor que 7</div>
+                <div class="option" onclick="selectOption(this, 1, false)">D) Obtener un número mayor que 0</div>
+            </div>
+            <button onclick="showAnswer(1)">Mostrar explicación</button>
+            <div id="answer-1" class="answer">
+                <p><strong>Respuesta correcta: B) Obtener un 3</strong></p>
+                <p>Es un suceso elemental porque contiene un único resultado posible. Los demás son sucesos compuestos porque contienen múltiples resultados.</p>
+            </div>
+        </div>
+
+        <div id="question-2" class="question">
+            <h2>Pregunta 2</h2>
+            <p>Dados los conjuntos A = {1, 3, 5, 7} y B = {2, 3, 5, 8}, ¿cuál es A ∩ B?</p>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 2, false)">A) {1, 2, 3, 5, 7, 8}</div>
+                <div class="option" onclick="selectOption(this, 2, true)">B) {3, 5}</div>
+                <div class="option" onclick="selectOption(this, 2, false)">C) {1, 7}</div>
+                <div class="option" onclick="selectOption(this, 2, false)">D) ∅</div>
+            </div>
+            <button onclick="showAnswer(2)">Mostrar explicación</button>
+            <div id="answer-2" class="answer">
+                <p><strong>Respuesta correcta: B) {3, 5}</strong></p>
+                <p>La intersección de dos conjuntos contiene solo los elementos que pertenecen a ambos conjuntos. En este caso, 3 y 5 son los únicos elementos que están tanto en A como en B.</p>
+            </div>
+        </div>
+
+        <div id="question-3" class="question">
+            <h2>Pregunta 3</h2>
+            <p>En una baraja española (40 cartas), al extraer una carta, ¿cuál es el suceso seguro?</p>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 3, false)">A) Obtener un as</div>
+                <div class="option" onclick="selectOption(this, 3, false)">B) Obtener una carta roja</div>
+                <div class="option" onclick="selectOption(this, 3, true)">C) Obtener una carta de la baraja</div>
+                <div class="option" onclick="selectOption(this, 3, false)">D) Obtener una figura (sota, caballo o rey)</div>
+            </div>
+            <button onclick="showAnswer(3)">Mostrar explicación</button>
+            <div id="answer-3" class="answer">
+                <p><strong>Respuesta correcta: C) Obtener una carta de la baraja</strong></p>
+                <p>El suceso seguro es aquel que siempre ocurre, es decir, incluye todos los resultados posibles del experimento. Como estamos extrayendo una carta de la baraja, el suceso "obtener una carta de la baraja" siempre ocurrirá.</p>
+            </div>
+        </div>
+
+        <div id="question-4" class="question">
+            <h2>Pregunta 4</h2>
+            <p>Si el espacio muestral es E = {a, b, c, d, e} y tenemos el suceso A = ∅, este suceso se clasifica como:</p>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 4, false)">A) Suceso elemental</div>
+                <div class="option" onclick="selectOption(this, 4, false)">B) Suceso compuesto</div>
+                <div class="option" onclick="selectOption(this, 4, false)">C) Suceso seguro</div>
+                <div class="option" onclick="selectOption(this, 4, true)">D) Suceso imposible</div>
+            </div>
+            <button onclick="showAnswer(4)">Mostrar explicación</button>
+            <div id="answer-4" class="answer">
+                <p><strong>Respuesta correcta: D) Suceso imposible</strong></p>
+                <p>El conjunto vacío (∅) representa un suceso que nunca ocurre, por lo tanto, es un suceso imposible. No contiene ningún resultado posible del experimento.</p>
+            </div>
+        </div>
+
+        <div id="question-5" class="question">
+            <h2>Pregunta 5</h2>
+            <p>Dados los conjuntos P = {2, 4, 6, 8} y Q = {1, 3, 5, 7, 9}, ¿cuál es P ∪ Q?</p>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 5, true)">A) {1, 2, 3, 4, 5, 6, 7, 8, 9}</div>
+                <div class="option" onclick="selectOption(this, 5, false)">B) ∅</div>
+                <div class="option" onclick="selectOption(this, 5, false)">C) {2, 4, 6, 8}</div>
+                <div class="option" onclick="selectOption(this, 5, false)">D) {1, 3, 5, 7, 9}</div>
+            </div>
+            <button onclick="showAnswer(5)">Mostrar explicación</button>
+            <div id="answer-5" class="answer">
+                <p><strong>Respuesta correcta: A) {1, 2, 3, 4, 5, 6, 7, 8, 9}</strong></p>
+                <p>La unión de dos conjuntos contiene todos los elementos que pertenecen a al menos uno de los conjuntos. En este caso, la unión de P y Q incluye todos los números del 1 al 9.</p>
+            </div>
+        </div>
+
+        <div id="question-6" class="question">
+            <h2>Pregunta 6</h2>
+            <p>Al lanzar una moneda dos veces, el espacio muestral es E = {(C,C), (C,X), (X,C), (X,X)}. Selecciona los sucesos elementales:</p>
+            <div class="options">
+                <div class="option" onclick="selectMultipleOptions(this, 6, false)">A) Obtener al menos una cara</div>
+                <div class="option" onclick="selectMultipleOptions(this, 6, false)">B) Obtener exactamente una cara</div>
+                <div class="option" onclick="selectMultipleOptions(this, 6, true)">C) Obtener cara seguida de cruz</div>
+                <div class="option" onclick="selectMultipleOptions(this, 6, true)">D) Obtener dos cruces</div>
+            </div>
+            <button onclick="showAnswer(6)">Mostrar explicación</button>
+            <div id="answer-6" class="answer">
+                <p><strong>Respuestas correctas: C y D</strong></p>
+                <p>Los sucesos elementales solo incluyen un único resultado posible:</p>
+                <ul>
+                    <li>C) Obtener cara seguida de cruz: {(C,X)} - un suceso elemental</li>
+                    <li>D) Obtener dos cruces: {(X,X)} - un suceso elemental</li>
+                </ul>
+                <p>Los sucesos compuestos incluyen más de un resultado:</p>
+                <ul>
+                    <li>A) Obtener al menos una cara: {(C,C), (C,X), (X,C)} - un suceso compuesto</li>
+                    <li>B) Obtener exactamente una cara: {(C,X), (X,C)} - un suceso compuesto</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="question-7" class="question">
+            <h2>Pregunta 7</h2>
+            <p>En el conjunto del alfabeto español, si R = {a, e, i, o, u} y S = {b, c, d, f, g, h, j, k, l, m, n, ñ, p, q, r, s, t, v, w, x, y, z}, selecciona las opciones correctas:</p>
+            <div class="options">
+                <div class="option" onclick="selectMultipleOptions(this, 7, false)">A) R ∪ S = ∅</div>
+                <div class="option" onclick="selectMultipleOptions(this, 7, false)">B) R ∩ S = {a, e, i, o, u}</div>
+                <div class="option" onclick="selectMultipleOptions(this, 7, true)">C) R y S son conjuntos disjuntos y complementarios</div>
+                <div class="option" onclick="selectMultipleOptions(this, 7, true)">D) R ∩ S = ∅</div>
+            </div>
+            <button onclick="showAnswer(7)">Mostrar explicación</button>
+            <div id="answer-7" class="answer">
+                <p><strong>Respuestas correctas: C y D</strong></p>
+                <p>C) R y S son conjuntos disjuntos y complementarios: Son disjuntos porque no tienen elementos en común, y son complementarios porque su unión forma el espacio muestral completo (el alfabeto).</p>
+                <p>D) R ∩ S = ∅: La intersección de R y S es el conjunto vacío porque no hay elementos comunes entre las vocales y las consonantes.</p>
+                <p>Las dos opciones (C y D) son correctas pero expresadas de manera diferente. La opción D es una forma matemática de indicar que los conjuntos son disjuntos.</p>
+            </div>
+        </div>
+
+        <div id="question-8" class="question">
+            <h2>Pregunta 8</h2>
+            <p>Dados los conjuntos X = {1, 2, 3, 4} e Y = {3, 4, 5, 6}, si el espacio muestral es E = {1, 2, 3, 4, 5, 6, 7, 8, 9}, selecciona las opciones correctas:</p>
+            <div class="options">
+                <div class="option" onclick="selectMultipleOptions(this, 8, true)">A) X ∪ Y = {1, 2, 3, 4, 5, 6}</div>
+                <div class="option" onclick="selectMultipleOptions(this, 8, false)">B) X ∩ Y = {1, 2, 5, 6}</div>
+                <div class="option" onclick="selectMultipleOptions(this, 8, true)">C) X ∪ Y = E</div>
+                <div class="option" onclick="selectMultipleOptions(this, 8, true)">D) X ∩ Y = {3, 4}</div>
+            </div>
+            <button onclick="showAnswer(8)">Mostrar explicación</button>
+            <div id="answer-8" class="answer">
+                <p><strong>Respuestas correctas: A, C y D</strong></p>
+                <p>A) X ∪ Y = {1, 2, 3, 4, 5, 6}: La unión de X e Y contiene todos los elementos que pertenecen a alguno de los conjuntos (o a ambos).</p>
+                <p>C) X ∪ Y = E: Es correcto que la unión de X e Y corresponde al espacio muestral E.</p>
+                <p>D) X ∩ Y = {3, 4}: La intersección de X e Y contiene solo los elementos que pertenecen a ambos conjuntos a la vez.</p>
+                <p>No es cierto que X ∩ Y = {1, 2, 5, 6}, ya que estos son precisamente los elementos que están en uno de los conjuntos pero no en ambos.</p>
+            </div>
+        </div>
+
+        <div id="question-9" class="question">
+            <h2>Pregunta 9</h2>
+            <p>En una urna con bolas numeradas del 1 al 20, selecciona las opciones correctas para el suceso "obtener un número múltiplo de 5":</p>
+            <div class="options">
+                <div class="option" onclick="selectMultipleOptions(this, 9, true)">A) El suceso es {5, 10, 15, 20}</div>
+                <div class="option" onclick="selectMultipleOptions(this, 9, false)">B) Es un suceso elemental</div>
+                <div class="option" onclick="selectMultipleOptions(this, 9, true)">C) Es un suceso compuesto</div>
+                <div class="option" onclick="selectMultipleOptions(this, 9, false)">D) Es el suceso seguro</div>
+            </div>
+            <button onclick="showAnswer(9)">Mostrar explicación</button>
+            <div id="answer-9" class="answer">
+                <p><strong>Respuestas correctas: A y C</strong></p>
+                <p>A) El suceso "obtener un número múltiplo de 5" corresponde al conjunto {5, 10, 15, 20}, que son todos los múltiplos de 5 en el rango del 1 al 20.</p>
+                <p>C) Es un suceso compuesto porque contiene más de un resultado posible (cuatro números).</p>
+                <p>No es un suceso elemental (que contendría un solo resultado) ni es el suceso seguro (que contendría todos los números del 1 al 20).</p>
+            </div>
+        </div>
+
+        <div id="question-10" class="question">
+            <h2>Pregunta 10</h2>
+            <p>Si A y B son sucesos tales que A ∩ B = ∅, pero A ∪ B ≠ E, entonces:</p>
+            <div class="options">
+                <div class="option" onclick="selectOption(this, 10, false)">A) A y B son iguales</div>
+                <div class="option" onclick="selectOption(this, 10, false)">B) A y B son complementarios</div>
+                <div class="option" onclick="selectOption(this, 10, true)">C) A y B son disjuntos no complementarios</div>
+                <div class="option" onclick="selectOption(this, 10, false)">D) A = ∅ o B = ∅</div>
+            </div>
+            <button onclick="showAnswer(10)">Mostrar explicación</button>
+            <div id="answer-10" class="answer">
+                <p><strong>Respuesta correcta: C) A y B son disjuntos no complementarios</strong></p>
+                <p>Dos conjuntos son disjuntos cuando no tienen elementos en común, es decir, cuando su intersección es el conjunto vacío (A ∩ B = ∅).</p>
+                <p>Para que sean complementarios, además de ser disjuntos, su unión debe ser igual al espacio muestral (A ∪ B = E).</p>
+                <p>En este caso, como A ∩ B = ∅ pero A ∪ B ≠ E, son disjuntos pero no complementarios.</p>
+            </div>
+        </div>
+
+        <div class="score-container">
+            <p>Puntuación: <span id="score">0</span> / 10</p>
+        </div>
+
+        <div class="controls">
+            <button onclick="resetQuiz()">Reiniciar Test</button>
+            <button onclick="showAllAnswers()">Mostrar Todas las Respuestas</button>
+        </div>
     </div>
-    
-    <div class="activity-card">
-        <h2>Probabilidad</h2>
-        <p>Test sobre conceptos básicos de probabilidad y aplicación de la regla de Laplace.</p>
-        <a href="probabilidad/">Abrir actividad</a>
-    </div>
-    
-    <div class="activity-card">
-        <h2>Geometría</h2>
-        <p>Ejercicios interactivos sobre figuras geométricas y cálculo de áreas y volúmenes.</p>
-        <a href="geometria/">Abrir actividad</a>
-    </div>
+
+    <script>
+        let score = 0;
+        
+        // Para preguntas con una sola respuesta correcta
+        function selectOption(element, questionNumber, isCorrect) {
+            // Remove selection from all options in this question
+            const options = document.querySelectorAll(`#question-${questionNumber} .option`);
+            
+            // Check if there was a previously selected correct answer
+            const wasCorrectlyAnswered = document.querySelector(`#question-${questionNumber} .option.correct`) !== null;
+            
+            // Remove all classes from options
+            options.forEach(option => {
+                option.classList.remove('selected');
+                option.classList.remove('correct');
+                option.classList.remove('incorrect');
+            });
+            
+            // Add selection to clicked option
+            element.classList.add('selected');
+            
+            // Add correct/incorrect class and update score
+            if (isCorrect) {
+                element.classList.add('correct');
+                // Add a point if this question wasn't already answered correctly
+                if (!wasCorrectlyAnswered) {
+                    score++;
+                    document.getElementById('score').textContent = score;
+                }
+            } else {
+                element.classList.add('incorrect');
+                // If there was a correct answer before and now it's wrong, subtract a point
+                if (wasCorrectlyAnswered) {
+                    score--;
+                    document.getElementById('score').textContent = score;
+                }
+            }
+        }
+        
+        // Para preguntas con múltiples respuestas correctas
+        function selectMultipleOptions(element, questionNumber, isCorrect) {
+            // Toggle selection on the clicked option
+            element.classList.toggle('selected');
+            
+            if (isCorrect) {
+                if (element.classList.contains('selected')) {
+                    element.classList.add('correct');
+                    element.classList.remove('incorrect');
+                } else {
+                    element.classList.remove('correct');
+                }
+            } else {
+                if (element.classList.contains('selected')) {
+                    element.classList.add('incorrect');
+                    element.classList.remove('correct');
+                } else {
+                    element.classList.remove('incorrect');
+                }
+            }
+            
+            // Check if all correct options are selected and no incorrect options are selected
+            updateScoreForMultipleChoice(questionNumber);
+        }
+        
+        function updateScoreForMultipleChoice(questionNumber) {
+            const allOptions = document.querySelectorAll(`#question-${questionNumber} .option`);
+            const correctOptions = document.querySelectorAll(`#question-${questionNumber} .option.correct`);
+            const incorrectOptions = document.querySelectorAll(`#question-${questionNumber} .option.incorrect`);
+            
+            // Find how many correct options there should be
+            let totalCorrectOptions = 0;
+            allOptions.forEach(option => {
+                const onclickAttr = option.getAttribute('onclick');
+                if (onclickAttr && onclickAttr.includes('true')) {
+                    totalCorrectOptions++;
+                }
+            });
+            
+            // Check if the question was previously answered correctly
+            const questionScoreKey = `q${questionNumber}_score`;
+            const previouslyCorrect = localStorage.getItem(questionScoreKey) === 'correct';
+            
+            // The question is answered correctly if all correct options are selected and no incorrect options are selected
+            const isCorrectNow = (correctOptions.length === totalCorrectOptions) && (incorrectOptions.length === 0);
+            
+            if (isCorrectNow && !previouslyCorrect) {
+                // If it's correct now and wasn't before, add a point
+                score++;
+                localStorage.setItem(questionScoreKey, 'correct');
+                document.getElementById('score').textContent = score;
+            } else if (!isCorrectNow && previouslyCorrect) {
+                // If it was correct before but isn't now, subtract a point
+                score--;
+                localStorage.setItem(questionScoreKey, 'incorrect');
+                document.getElementById('score').textContent = score;
+            }
+        }
+        
+        function showAnswer(questionNumber) {
+            const answer = document.getElementById(`answer-${questionNumber}`);
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+            }
+        }
+        
+        function showAllAnswers() {
+            const answers = document.querySelectorAll('.answer');
+            answers.forEach(answer => {
+                answer.style.display = 'block';
+            });
+        }
+        
+        function resetQuiz() {
+            score = 0;
+            document.getElementById('score').textContent = score;
+            
+            // Clear localStorage
+            for (let i = 1; i <= 10; i++) {
+                localStorage.removeItem(`q${i}_score`);
+            }
+            
+            // Remove all selections and hide answers
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.classList.remove('selected');
+                option.classList.remove('correct');
+                option.classList.remove('incorrect');
+            });
+            
+            const answers = document.querySelectorAll('.answer');
+            answers.forEach(answer => {
+                answer.style.display = 'none';
+            });
+        }
+        
+        // Initialize localStorage for multiple choice questions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Clear any existing localStorage items for the quiz
+            for (let i = 1; i <= 10; i++) {
+                localStorage.removeItem(`q${i}_score`);
+            }
+            
+            // Re-number questions
+            const questions = document.querySelectorAll('.question h2');
+            questions.forEach((questionHeader, index) => {
+                questionHeader.textContent = `Pregunta ${index + 1}`;
+            });
+        });
+    </script>
 </body>
 </html>
-
